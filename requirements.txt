@@ -3,5 +3,5 @@ streamlit
 streamlit-option-menu
 streamlit-timeline
 PyYAML
-authenticate
+sstreamlit-authenticator
 captcha
