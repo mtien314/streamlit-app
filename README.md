@@ -15,4 +15,4 @@ streamlit run streamlit_app.py
 
 ### If your app is error free, it should get deployed !! My portfolio looks something like this
 
-![Preview](<"capture.jpg">)
+capture.jpg
