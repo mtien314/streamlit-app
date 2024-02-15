@@ -15,4 +15,4 @@ streamlit run streamlit_app.py
 
 ### If your app is error free, it should get deployed !! My portfolio looks something like this
 
-![Preview](<img width="530" alt="image" src="https://github.com/mtien314/streamlit-app/assets/90877954/bb3d6d66-b615-4604-8001-b58e1c3e3d81">)
+![Preview](<"capture.jpg">)
