@@ -1,0 +1,8 @@
+{"events": [
+    {"start_date":{"year":"2023","month":"7"},"media":{"url":"https://s.net.vn/vY0f","credit": "freepik"},
+    "text":{"headline":"Predict interest-rate (Banking)","text":"Predict interest rate for applied to the loan base on features such as: Annual income,Purpose of loan,Loan amount requested"}},
+    {"start_date": {"year": "2023", "month": "6"},"media": {"url": "https://s.net.vn/nb9v", "credit": "freepik"},
+    "text": {"headline": "Predict churn-rate", "text": "Churn rate is a marketing metric that describes the number of customers who leave a business over a specific time period.Every user is assigned a prediction value that estimates their state of churn at any given time"}},
+    {"start_date": {"year": "2023", "month": "5", "day": "30"},
+    "media": {"url": "https://s.net.vn/Lsz1", "caption": "sample prescriptions", "credit": "Freepik"},
+        "text": {"headline": "Linear programming", "text": "Write a program to solve linear programming problem"}}]}
