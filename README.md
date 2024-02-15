@@ -13,7 +13,8 @@ streamlit run streamlit_app.py
 * Sign in https://streamlit.io/ using the same mail as for github account where code is pushed (for ease)
 
 
-### If your app is error free, it should get deployed !! My portfolio looks something like this
+### If your app is error free, it should get deployed !! My portfolio looks something like this 
+# Preview
 
 <img width="568" alt="image" src="https://github.com/mtien314/streamlit-app/assets/90877954/a6216c79-c5dc-407f-9887-57fc9fbcc4d5">
 
