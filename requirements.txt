@@ -1,5 +1,5 @@
 streamlit
-streamlit-option-menu
+option-menu
 streamlit_timeline
 yaml
 authenticate
