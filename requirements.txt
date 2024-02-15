@@ -1,6 +1,6 @@
 streamlit
-streamlit_option_menu
-streamlit_timeline
+streamlit-option-menu
+streamlit-timeline
 yaml
 authenticate
 captcha
