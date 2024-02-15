@@ -87,7 +87,7 @@ if selected== "Home":
              " passion, I want to dedicate my career to AI for the betterment of the world :technologist:.\n")
     st.header("Projects")
     with st.spinner(text = "Building line"):
-        with open('setup/time-line.json', "r") as f:
+        with open('time-line.json', "r") as f:
             data = f.read()
             timeline(data,height = 500)
     st.header('Skills & Tools :hammer_and_pick:')
@@ -127,7 +127,7 @@ if selected == "Login":
     result = ""
     if _RELEASE:
         # Loading config file
-        with open('../config.yaml') as file:
+        with open('config.yaml') as file:
             config = yaml.load(file, Loader=SafeLoader)
 
         # Creating the authenticator object
@@ -188,5 +188,5 @@ if selected == "Login":
             captcha_control()
 
         # Saving config file
-        with open('../config.yaml', 'w') as file:
+        with open('config.yaml', 'w') as file:
             yaml.dump(config, file, default_flow_style=False)
