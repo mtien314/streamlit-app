@@ -167,14 +167,15 @@ if selected == "Login":
             except Exception as e:
                 st.error(e)
 
-
-        try:
-            email_of_registered_user, username_of_registered_user, name_of_registered_user = authenticator.register_user(
+        if result:
+            st.session_state["register_clicked"] = True
+            try:
+                email_of_registered_user, username_of_registered_user, name_of_registered_user = authenticator.register_user(
                         preauthorization=False)
-            if email_of_registered_user:
-                st.success('User registered successfully')
-        except Exception as e:
-            st.error(e)
+                if email_of_registered_user:
+                    st.success('User registered successfully')
+            except Exception as e:
+                st.error(e)
         
 
         if 'controllo' not in st.session_state or st.session_state['controllo'] == False:
