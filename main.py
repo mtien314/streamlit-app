@@ -53,7 +53,7 @@ def captcha_control():
 
         if st.button("Reload"):
             del st.session_state['controllo']
-            st.experimental_rerun()
+            st.rerun()
 
         if st.button("Verify the code"):
             print(capta2_text,st.session_state['Captcha'])
@@ -64,13 +64,13 @@ def captcha_control():
                 col1.empty()
                 col2.empty()
                 st.session_state['controllo'] = True
-                st.experimental_rerun()
+                st.rerun()
 
             else:
                 st.error("Error")
                 del st.session_state['Captcha']
                 del st.session_state['controllo']
-                st.experimental_rerun()
+                st.rerun()
 
         else:
             #Wait for the button click
@@ -158,6 +158,7 @@ if selected == "Login":
             # button
             result = st.button("Have not account ?")
 
+
         # Creating a password reset widget
         if st.session_state["authentication_status"] is True:
             try:
@@ -166,15 +167,20 @@ if selected == "Login":
             except Exception as e:
                 st.error(e)
 
-        if result:
-            if st.session_state["authentication_status"] is None:
-                try:
-                    email_of_registered_user, username_of_registered_user, name_of_registered_user = authenticator.register_user(
+
+        try:
+            if result ==True:
+                email_of_registered_user, username_of_registered_user, name_of_registered_user = authenticator.register_user(
                         preauthorization=False)
-                    if email_of_registered_user:
-                        st.success('User registered successfully')
-                except Exception as e:
-                    st.error(e)
+                if email_of_registered_user:
+                    st.success('User registered successfully')
+        except Exception as e:
+            st.error(e)
+        
+
+        if 'controllo' not in st.session_state or st.session_state['controllo'] == False:
+            captcha_control()
+
 
         # Creating an update user details widget
         if st.session_state["authentication_status"] is True:
@@ -184,8 +190,7 @@ if selected == "Login":
             except Exception as e:
                 st.error(e)
 
-        if 'controllo' not in st.session_state or st.session_state['controllo'] == False:
-            captcha_control()
+
 
         # Saving config file
         with open('config.yaml', 'w') as file:
