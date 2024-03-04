@@ -124,7 +124,7 @@ if selected== "Home":
 
 if selected == "Login":
     _RELEASE = True
-    result = ""
+    #result = ""
     if _RELEASE:
         # Loading config file
         with open('config.yaml') as file:
@@ -149,15 +149,24 @@ if selected == "Login":
             authenticator.logout()
             st.write(f'Welcome *{st.session_state["name"]}*')
             st.title('Home')
-            st.image('sunrise.jpg')
+            #st.image('sunrise.jpg')
         elif st.session_state["authentication_status"] is False:
             st.error('Username/password is incorrect')
         elif st.session_state["authentication_status"] is None:
             st.warning('Please Enter Username/password')
+            
 
-            # button
-            result = st.button("Have not account ?")
-
+        if st.button('Register'):
+            st.session_state["register_clicked"] = True
+        
+        if st.session_state.get("register_clicked", False):
+            try:
+                email_of_registered_user, username_of_registered_user, name_of_registered_user = authenticator.register_user(
+                    preauthorization=False)    
+                if email_of_registered_user:
+                    st.success('User registered successfully')
+            except Exception as e:
+                st.error(e)
 
         # Creating a password reset widget
         if st.session_state["authentication_status"] is True:
@@ -167,19 +176,8 @@ if selected == "Login":
             except Exception as e:
                 st.error(e)
 
-        if result:
-            st.session_state["register_clicked"] = True
 
-        if st.session_state.get("register_clicked", False):
-            try:
-                email_of_registered_user, username_of_registered_user, name_of_registered_user = authenticator.register_user(
-                        preauthorization=False)
-                if email_of_registered_user:
-                    st.success('User registered successfully')
-            except Exception as e:
-                st.error(e)
         
-
         if 'controllo' not in st.session_state or st.session_state['controllo'] == False:
             captcha_control()
 
