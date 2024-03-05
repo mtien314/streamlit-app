@@ -6,7 +6,8 @@ from yaml.loader import SafeLoader
 from authenticate import Authenticate
 from captcha.image import ImageCaptcha
 import random, string
-import logging 
+from streamlit.report_thread import get_report_ctx
+from streamlit.server.server import Server
 
 EXAMPLE_NO = 1
 
@@ -145,56 +146,25 @@ if selected == "Login":
         except Exception as e:
             st.error(e)
 
+        # Get the session object
+        session_id = get_report_ctx().session_id
+
+        # Get the session state object
+        session_state = Server.get_current()._get_session_info(session_id).session_state
+
         try:
-            if st.session_state["authentication_status"]:
+            if session_state.get("authentication_status", None):
                 authenticator.logout()
-                st.write(f'Welcome *{st.session_state["name"]}*')
+                st.write(f'Welcome *{session_state["name"]}*')
                 st.title('Home')
                 st.image('sunrise.jpg')
-            elif st.session_state["authentication_status"] is False:
+            elif session_state.get("authentication_status", None) is False:
                 st.error('Username/password is incorrect')
-            elif st.session_state["authentication_status"] is None:
+            elif session_state.get("authentication_status", None) is None:
                 st.warning('Please Enter Username/password')
-        except Exception as e:
-            st.error(e)
-            
-            
-
-        if st.button('Register'):
-            st.session_state["register_clicked"] = True
-        
-        if st.session_state.get("register_clicked", False):
-            try:
-                email_of_registered_user, username_of_registered_user, name_of_registered_user = authenticator.register_user(
-                    preauthorization=False)    
-                if email_of_registered_user:
-                    config['credentials']['username'] = username_of_registered_user
-                    st.success('User registered successfully')
             except Exception as e:
                 st.error(e)
-
-        # Creating a password reset widget
-        if st.session_state["authentication_status"] is True:
-            try:
-                if authenticator.reset_password(st.session_state["username"]):
-                    st.success('Password modified successfully')
-            except Exception as e:
-                st.error(e)
-
-
-        
-        #if 'controllo' not in st.session_state or st.session_state['controllo'] == False:
-            #captcha_control()
-
-
-        # Creating an update user details widget
-        if st.session_state["authentication_status"] is True:
-            try:
-                if authenticator.update_user_details(st.session_state["username"]):
-                    st.success('Entries updated successfully')
-            except Exception as e:
-                st.error(e)
-
+  
 
 
         # Saving config file
