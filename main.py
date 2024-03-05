@@ -171,7 +171,10 @@ if selected == "Login":
             if email_of_registered_user:
                 #config['credentials']['username'] = username_of_registered_user
                 st.success('User registered successfully')
-                authenticator.login() 
+                try:
+                    authenticator.login()
+                except Exception as e:
+                    st.error(e)
         except Exception as e:
             st.error(e)
 
