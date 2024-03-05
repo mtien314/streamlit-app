@@ -6,7 +6,7 @@ from yaml.loader import SafeLoader
 from authenticate import Authenticate
 from captcha.image import ImageCaptcha
 import random, string
-
+import logging 
 
 EXAMPLE_NO = 1
 
@@ -125,6 +125,7 @@ if selected== "Home":
 if selected == "Login":
     _RELEASE = True
     #result = ""
+    logging.basicConfig(filename='streamlit.log', level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
     if _RELEASE:
         # Loading config file
         with open('config.yaml') as file:
