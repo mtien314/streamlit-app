@@ -183,8 +183,8 @@ if selected == "Login":
 
 
         
-        if 'controllo' not in st.session_state or st.session_state['controllo'] == False:
-            captcha_control()
+        #if 'controllo' not in st.session_state or st.session_state['controllo'] == False:
+            #captcha_control()
 
 
         # Creating an update user details widget
