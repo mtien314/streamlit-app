@@ -161,18 +161,18 @@ if selected == "Login":
             
             
 
-        #if st.button('Register'):
+        if st.button('Register'):
             #st.session_state["register_clicked"] = True
         
-        #if st.session_state.get("register_clicked", False):
-        try:
-            email_of_registered_user, username_of_registered_user, name_of_registered_user = authenticator.register_user(
+        if st.session_state.get("register_clicked", False):
+            try:
+                email_of_registered_user, username_of_registered_user, name_of_registered_user = authenticator.register_user(
                     preauthorization=False)    
-            if email_of_registered_user:
-                config['credentials']['username'] = username_of_registered_user
-                st.success('User registered successfully')
-        except Exception as e:
-            st.error(e)
+                if email_of_registered_user:
+                    config['credentials']['username'] = username_of_registered_user
+                    st.success('User registered successfully')
+            except Exception as e:
+                st.error(e)
 
         # Creating a password reset widget
         if st.session_state["authentication_status"] is True:
@@ -184,8 +184,8 @@ if selected == "Login":
 
 
         
-        #if 'controllo' not in st.session_state or st.session_state['controllo'] == False:
-            #captcha_control()
+        if 'controllo' not in st.session_state or st.session_state['controllo'] == False:
+            captcha_control()
 
 
         # Creating an update user details widget
