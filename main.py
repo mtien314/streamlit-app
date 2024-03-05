@@ -20,7 +20,6 @@ height = 150
 def streamlit_menu(example=1):
     if example == 1:
         # 1. as sidebar menu
-
         selected = option_menu(
             menu_title = None,  # required
             options=["Home", "Login"],  # required
