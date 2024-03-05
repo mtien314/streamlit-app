@@ -125,7 +125,7 @@ if selected== "Home":
 if selected == "Login":
     _RELEASE = True
     #result = ""
-    #logging.basicConfig(filename='streamlit.log', level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
+
     if _RELEASE:
         # Loading config file
         with open('config.yaml') as file:
@@ -146,15 +146,19 @@ if selected == "Login":
         except Exception as e:
             st.error(e)
 
-        if st.session_state["authentication_status"]:
-            authenticator.logout()
-            st.write(f'Welcome *{st.session_state["name"]}*')
-            st.title('Home')
-            #st.image('sunrise.jpg')
-        elif st.session_state["authentication_status"] is False:
-            st.error('Username/password is incorrect')
-        elif st.session_state["authentication_status"] is None:
-            st.warning('Please Enter Username/password')
+        try:
+            if st.session_state["authentication_status"]:
+                authenticator.logout()
+                st.write(f'Welcome *{st.session_state["name"]}*')
+                st.title('Home')
+                st.image('sunrise.jpg')
+            elif st.session_state["authentication_status"] is False:
+                st.error('Username/password is incorrect')
+            elif st.session_state["authentication_status"] is None:
+                st.warning('Please Enter Username/password')
+        except Exception as e:
+            st.error(e)
+            
             
 
         #if st.button('Register'):
