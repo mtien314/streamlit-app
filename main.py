@@ -162,7 +162,7 @@ if selected == "Login":
             
 
         if st.button('Register'):
-            #st.session_state["register_clicked"] = True
+            st.session_state["register_clicked"] = True
         
         if st.session_state.get("register_clicked", False):
             try:
