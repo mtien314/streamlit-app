@@ -125,7 +125,7 @@ if selected== "Home":
 if selected == "Login":
     _RELEASE = True
     #result = ""
-    logging.basicConfig(filename='streamlit.log', level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
+    #logging.basicConfig(filename='streamlit.log', level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
     if _RELEASE:
         # Loading config file
         with open('config.yaml') as file:
@@ -157,18 +157,18 @@ if selected == "Login":
             st.warning('Please Enter Username/password')
             
 
-        if st.button('Register'):
-            st.session_state["register_clicked"] = True
+        #if st.button('Register'):
+            #st.session_state["register_clicked"] = True
         
-        if st.session_state.get("register_clicked", False):
-            try:
-                email_of_registered_user, username_of_registered_user, name_of_registered_user = authenticator.register_user(
+        #if st.session_state.get("register_clicked", False):
+        try:
+            email_of_registered_user, username_of_registered_user, name_of_registered_user = authenticator.register_user(
                     preauthorization=False)    
-                if email_of_registered_user:
-                    config['credentials']['username'] = username_of_registered_user
-                    st.success('User registered successfully')
-            except Exception as e:
-                st.error(e)
+            if email_of_registered_user:
+                config['credentials']['username'] = username_of_registered_user
+                st.success('User registered successfully')
+        except Exception as e:
+            st.error(e)
 
         # Creating a password reset widget
         if st.session_state["authentication_status"] is True:
