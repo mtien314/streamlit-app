@@ -162,8 +162,8 @@ if selected == "Login":
                 st.error('Username/password is incorrect')
             elif session_state.get("authentication_status", None) is None:
                 st.warning('Please Enter Username/password')
-            except Exception as e:
-                st.error(e)
+        except Exception as e:
+            st.error(e)
   
 
 
