@@ -164,8 +164,8 @@ if selected == "Login":
                 email_of_registered_user, username_of_registered_user, name_of_registered_user = authenticator.register_user(
                     preauthorization=False)    
                 if email_of_registered_user:
-                    st.success('User registered successfully')
                     config['credentials']['username'] = username_of_registered_user
+                    st.success('User registered successfully')
             except Exception as e:
                 st.error(e)
 
