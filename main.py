@@ -171,19 +171,6 @@ if selected == "Login":
             if email_of_registered_user:
                 config['credentials']['username'] = username_of_registered_user
                 st.success('User registered successfully')
-                try:
-                    authenticator.login()
-                    if st.session_state["authentication_status"]:
-                        authenticator.logout()
-                        st.write(f'Welcome *{st.session_state["name"]}*')
-                        st.title('Home')
-                        st.image('sunrise.jpg')
-                    elif st.session_state["authentication_status"] is False:
-                        st.error('Username/password is incorrect')
-                    elif st.session_state["authentication_status"] is None:
-                        st.warning('Please Enter Username/password')
-                except Exception as e:
-                    st.error(e)
         except Exception as e:
             st.error(e)
 
