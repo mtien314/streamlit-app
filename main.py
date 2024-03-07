@@ -161,23 +161,18 @@ if selected == "Login":
 
         elif st.session_state["authentication_status"] is None:
             st.warning('Please Enter Username/password')
-  
+            result = st.button('Register')
 
-        if st.button('Register'):
+        if result:
             st.session_state["register_clicked"] = True
         
-        if st.session_state.get("register_clicked", False):
-                try:
-                    email_of_registered_user, username_of_registered_user,name_of_registered_user = authenticator.register_user(
-                    preauthorization=False)    
-                    if email_of_registered_user:
-                        st.success('User registered successfully')
-                        config['credentials']['username'] = username_of_registered_user
-                        #config['credentials']['password'] = password_of_registered_user
-                        print(config['credentials']['username'])
-                        #print(config['credentials']['password'])
-                        
-                except Exception as e:
+        if st.session_state.get("register_clicked",True):
+            try:
+                email_of_registered_user, username_of_registered_user,name_of_registered_user = authenticator.register_user(
+                preauthorization=False)    
+                if email_of_registered_user:
+                    st.success('User registered successfully')
+            except Exception as e:
                     st.error(e)
 
         # Creating a password reset widget
