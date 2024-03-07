@@ -171,7 +171,9 @@ if selected == "Login":
                     st.success('User registered successfully')
             except Exception as e:
                     st.error(e)
-
+                
+        st.session_state["register_clicked"] = False
+        
         # Creating a password reset widget
         if st.session_state["authentication_status"] is True:
             try:
@@ -179,7 +181,7 @@ if selected == "Login":
                     st.success('Password modified successfully')
             except Exception as e:
                 st.error(e)
-        st.session_state["authentication_status"] = False
+        
 
         # Creating an update user details widget
         if st.session_state["authentication_status"] is True:
