@@ -163,19 +163,19 @@ if selected == "Login":
             st.warning('Please Enter Username/password')
             result = st.button('Have not account ?')
         
-            if result:
-                st.session_state["register_clicked"] = True
+        if result:
+            st.session_state["register_clicked"] = True
             
-            if st.session_state.get("register_clicked",False):
+        if st.session_state.get("register_clicked",False):
         
-                try:
-                    email_of_registered_user, username_of_registered_user,name_of_registered_user = authenticator.register_user(
+            try:
+                email_of_registered_user, username_of_registered_user,name_of_registered_user = authenticator.register_user(
                     preauthorization=False)    
-                    if email_of_registered_user:
-                        st.success('User registered successfully')
+                if email_of_registered_user:
+                    st.success('User registered successfully')
                     
-                except Exception as e:
-                    st.error(e)
+            except Exception as e:
+                st.error(e)
                 
         
         
