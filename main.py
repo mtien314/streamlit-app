@@ -191,6 +191,12 @@ if selected == "Login":
             try:
                 if authenticator.update_user_details(st.session_state["username"]):
                     st.success('Entries updated successfully')
+                            
+                    config['credentials']['username'] = username_of_registered_user
+                    st.session_state["name"] = name_of_registered_user
+                # Save the new username to the config file
+                    with open('config.yaml', 'w') as file:
+                        yaml.dump(config, file, default_flow_style=False)
             except Exception as e:
                 st.error(e)
         
