@@ -190,7 +190,8 @@ if selected == "Login":
             try:
                 if authenticator.update_user_details(st.session_state["username"]):
                     st.success('Entries updated successfully')
-                    
+                     with open('config.yaml', 'w') as file:
+                        yaml.dump(config, file, default_flow_style=False)
             except Exception as e:
                 st.error(e)
         
