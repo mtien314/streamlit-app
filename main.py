@@ -176,7 +176,7 @@ if selected == "Login":
             except Exception as e:
                     st.error(e)
                 
-        st.session_state["register_clicked"] = True
+        st.session_state["register_clicked"] = False
         
         # Creating a password reset widget
         if st.session_state["authentication_status"]:
