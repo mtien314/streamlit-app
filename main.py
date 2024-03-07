@@ -163,7 +163,7 @@ if selected == "Login":
             st.warning('Please Enter Username/password')
             result = st.button('Register')
 
-        if result:
+        if result == True:
             st.session_state["register_clicked"] = True
         
         if st.session_state.get("register_clicked",True):
