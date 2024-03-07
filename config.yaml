@@ -24,11 +24,6 @@ credentials:
       logged_in: false
       name: Ross Couper
       password: $2b$12$Tir/PbHVmmnt5kgNxgOwMuxNIb2fv2pJ.q71TW8ekvbugCqkye4yu
-    mtien:
-      email: 5260tien@gmail.com
-      logged_in: true
-      name: tien
-      password: $2b$12$v7weZH9wQYGSbBxBv6RhJ.2KmaQcsksDU1rS1BoENCQibQ6AxgjMG
 preauthorized:
   emails:
   - melsby@gmail.com
