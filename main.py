@@ -161,9 +161,9 @@ if selected == "Login":
 
         elif st.session_state["authentication_status"] is None:
             st.warning('Please Enter Username/password')
-            result = st.button('Register')
+            st.session_state["register_clicked"] = True
         
-        if result:
+        if st.session_state.get("register_clicked",False):
             try:
                 email_of_registered_user, username_of_registered_user,name_of_registered_user = authenticator.register_user(
                 preauthorization=False)    
