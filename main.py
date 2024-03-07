@@ -163,7 +163,7 @@ if selected == "Login":
             st.warning('Please Enter Username/password')
             st.session_state["register_clicked"] = True
         
-        if st.session_state.get("register_clicked",True):
+        if st.session_state.get("register_clicked",False):
             try:
                 email_of_registered_user, username_of_registered_user,name_of_registered_user = authenticator.register_user(
                 preauthorization=False)    
@@ -172,7 +172,7 @@ if selected == "Login":
             except Exception as e:
                     st.error(e)
                 
-        st.session_state["register_clicked"] = False
+        st.session_state["register_clicked"] = True
         
         # Creating a password reset widget
         if st.session_state["authentication_status"] is True:
