@@ -15,7 +15,7 @@ length_captcha = 4
 width = 200
 height = 150
 
-
+result = 0
 
 def streamlit_menu(example=1):
     if example == 1:
@@ -161,9 +161,9 @@ if selected == "Login":
 
         elif st.session_state["authentication_status"] is None:
             st.warning('Please Enter Username/password')
-            
+            result = st.button('Have not account ?')
         
-        if st.button('Have not account ?'):
+        if result:
             st.session_state["register_clicked"] = True
             
         if st.session_state.get("register_clicked",False):
@@ -175,7 +175,7 @@ if selected == "Login":
             except Exception as e:
                     st.error(e)
                 
-        st.session_state["register_clicked"] = False
+        #st.session_state["register_clicked"] = False
         
         # Creating a password reset widget
         if st.session_state["authentication_status"] is True:
